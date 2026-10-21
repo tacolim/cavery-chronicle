@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% assign latest = site.posts.first %}
+{% if latest %}
+<!-- latest entry: the start of the post, faded out at the bottom (see .fadeExcerpt in style.css) -->
+<section class="panel latest">
+	<p class="eyebrow">Latest entry</p>
+	<h1><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h1>
+	<time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: "%b %-d, %Y" }}</time>
+	<div class="fadeExcerpt" inert>
+		{{ latest.content }}
+	</div>
+	<a class="button" href="{{ latest.url | relative_url }}">Continue reading <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+</section>
+{% endif %}
+
+<!-- every entry, newest first; blurb comes from each post's `description` front matter -->
+<section class="panel archive">
+	<h2>All entries</h2>
+	<ol class="entryList">
+		{% for post in site.posts %}
+		<li class="entryCard">
+			<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+			<h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+			<p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</p>
+		</li>
+		{% endfor %}
+	</ol>
+</section>

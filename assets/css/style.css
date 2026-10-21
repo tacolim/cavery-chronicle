@@ -1,0 +1,340 @@
+@import url("fontawesome.min.css");
+@import url("brands.min.css");
+@import url("solid.min.css");
+
+/* palette and shapes borrowed from cassidyavery.com (portfolio/assets/css/main.css) */
+:root {
+    --dark-teal: #004d66;
+    --dark-teal-90: rgba(0, 77, 102, .9);
+    --light-teal: #c5eaed;
+    --border-teal: teal;
+    --panel: #f4fbfc;
+    --text: #1b2a2f;
+    --muted: #4d6670;
+    --shadow: rgba(0,0,0,0.2) 0px 2px 3px, inset rgba(0,0,0,0.2) 0px -1px 2px;
+    --corners: 0px 70px;
+    --corners-small: 0px 30px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--border-teal);
+}
+
+body {
+    margin: 0;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* fixed teal-pattern backdrop: a position:fixed layer instead of `background-attachment: fixed`,
+   which iOS Safari ignores (same technique as the portfolio) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url("../images/teal-pattern.webp") no-repeat center / cover;
+}
+
+h1, h2, h3 {
+    font-family: 'Philosopher', sans-serif;
+    line-height: 1.25;
+}
+
+a {
+    color: var(--dark-teal);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    border-radius: 4px;
+    transition: background-color .2s, color .2s;
+}
+
+a:hover,
+a:focus-visible {
+    background-color: var(--dark-teal);
+    color: #fff;
+    text-decoration-color: transparent;
+}
+
+/*HEADER: painting band with the portfolio's title box*/
+
+.siteHeader {
+    background: var(--dark-teal) url("../images/bluepainting.webp") no-repeat center / cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 1rem 2.5rem;
+}
+
+.siteTitle {
+    display: block;
+    max-width: 34rem;
+    padding: 1rem 2.5rem;
+    background-color: rgba(0, 77, 102, .7);
+    box-shadow: var(--shadow);
+    border-radius: var(--corners);
+    font-family: 'Philosopher', sans-serif;
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    line-height: 1.2;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    animation: fadeIn 2s;
+}
+
+.siteTitle:hover,
+.siteTitle:focus-visible {
+    background-color: var(--dark-teal-90);
+}
+
+.byline {
+    margin: 1rem 0 0;
+    color: #fff;
+    font-family: 'Philosopher', sans-serif;
+    text-shadow: 0 1px 3px rgba(0,0,0,.6);
+}
+
+.byline a {
+    color: #fff;
+    text-decoration-color: rgba(255,255,255,.6);
+}
+
+.byline a:hover,
+.byline a:focus-visible {
+    background-color: transparent;
+    text-decoration-color: #fff;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+/*PANELS: readable cards floating on the teal pattern, like the portfolio's About card*/
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 3rem;
+}
+
+.panel {
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    border-radius: var(--corners-small);
+    padding: 2rem clamp(1.25rem, 5vw, 3rem);
+    margin-bottom: 2rem;
+}
+
+.panel h1 {
+    font-size: clamp(1.75rem, 4.5vw, 2.4rem);
+    margin: 0 0 .25rem;
+}
+
+.panel h1 a {
+    text-decoration: none;
+}
+
+time {
+    display: block;
+    color: var(--muted);
+    font-size: .95rem;
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--border-teal);
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem 1.5rem;
+    background-color: var(--dark-teal);
+    color: #fff;
+    border-radius: var(--corners-small);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+}
+
+.button:hover,
+.button:focus-visible {
+    background-color: var(--border-teal);
+}
+
+/*LATEST: the start of the newest post, fading into the panel*/
+
+.fadeExcerpt {
+    position: relative;
+    max-height: 22em;
+    overflow: hidden;
+    margin: 1.5rem 0 1rem;
+}
+
+.fadeExcerpt::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 8em;
+    background: linear-gradient(to bottom, rgba(244, 251, 252, 0), var(--panel));
+}
+
+.fadeExcerpt > :first-child {
+    margin-top: 0;
+}
+
+.latest .button {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/*ARCHIVE*/
+
+.archive h2 {
+    margin-top: 0;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid var(--border-teal);
+}
+
+.entryList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.entryCard {
+    background: var(--light-teal);
+    border-left: 5px solid var(--border-teal);
+    border-radius: var(--corners-small);
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+}
+
+.entryCard h3 {
+    margin: .1rem 0 .25rem;
+    font-size: 1.35rem;
+}
+
+.entryCard h3 a {
+    text-decoration: none;
+}
+
+.entryCard p {
+    margin: 0;
+}
+
+/*POST*/
+
+.postHeader {
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-teal);
+}
+
+.postContent h2,
+.postContent h3 {
+    margin-top: 2rem;
+}
+
+.postContent img {
+    max-width: 100%;
+    height: auto;
+}
+
+.postContent pre,
+.postContent code {
+    font-size: .9em;
+    background: var(--light-teal);
+    border-radius: 4px;
+}
+
+.postContent pre {
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.postContent code {
+    padding: .1em .3em;
+}
+
+.postContent pre code {
+    padding: 0;
+    background: none;
+}
+
+.postContent blockquote {
+    margin: 1.5rem 0;
+    padding: .25rem 1.25rem;
+    border-left: 5px solid var(--border-teal);
+    background: var(--light-teal);
+    border-radius: var(--corners-small);
+}
+
+.postNav {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border-teal);
+}
+
+/*FOOTER: same dark-teal band as the portfolio*/
+
+.siteFooter {
+    background-color: var(--dark-teal-90);
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+.siteFooter h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+    font-size: 1.75rem;
+}
+
+.icons a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.icons a:hover,
+.icons a:focus-visible {
+    background-color: transparent;
+    color: #35b88f;
+}
+
+.copyright {
+    margin: 0;
+    font-size: .9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .siteTitle { animation: none; }
+}
