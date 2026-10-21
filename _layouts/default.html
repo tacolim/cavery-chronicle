@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		{% seo %}
+		{% feed_meta %}
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher:wght@700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" />
+		<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+	</head>
+	<body>
+
+		<header class="siteHeader">
+			<a class="siteTitle" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+			<p class="byline">by <a href="https://cassidyavery.com">Cassidy Avery</a></p>
+		</header>
+
+		<main>
+			{{ content }}
+		</main>
+
+		<footer class="siteFooter">
+			<h2>Connect With Cassidy</h2>
+			<ul class="icons">
+				<li><a href="https://cassidyavery.com" class="fa-solid fa-globe" aria-label="cassidyavery.com"></a></li>
+				<li><a href="https://github.com/tacolim" class="fa-brands fa-github" target="_blank" rel="noopener" aria-label="GitHub"></a></li>
+				<li><a href="https://www.linkedin.com/in/cassidysnavery/" class="fa-brands fa-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"></a></li>
+				<li><a href="{{ '/feed.xml' | relative_url }}" class="fa-solid fa-rss" aria-label="RSS feed"></a></li>
+			</ul>
+			<p class="copyright">&copy; Cassidy SN Avery. All rights reserved.</p>
+		</footer>
+
+	</body>
+</html>

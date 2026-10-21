@@ -1,5 +1,24 @@
-title: ARENA Log
-description: Chronicle of Interpretability Exploration
-theme: minima
+title: Chronicle of Interpretability Exploration
+description: Cassidy Avery's journal of learning AI interpretability — the confusions, the learnings, and what's going on inside the machine.
+tagline: Cassidy Avery
+author: Cassidy Avery
+url: https://chronicle.cassidyavery.com
+baseurl: ""
+lang: en
+
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+
+# link-preview image for every page (jekyll-seo-tag reads `image` per page, not site-wide)
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: https://cassidyavery.com/images/cassidy.jpg
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
