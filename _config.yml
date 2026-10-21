@@ -1,0 +1,5 @@
+title: ARENA Log
+description: Chronicle of Interpretability Exploration
+theme: minima
+plugins:
+  - jekyll-feed
